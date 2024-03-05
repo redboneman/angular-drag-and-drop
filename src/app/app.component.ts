@@ -10,11 +10,12 @@ import {
 } from '@angular/cdk/drag-drop';
 import {CdkContextMenuTrigger, CdkMenu, CdkMenuItem} from '@angular/cdk/menu';
 import {NgStyle} from '@angular/common';
+import {WidgetComponent} from './widget/widget.component';
 
 @Component({
 	selector: 'app-root',
 	standalone: true,
-	imports: [RouterOutlet, CdkDrag, CdkDropList, CdkDropListGroup, CdkContextMenuTrigger, CdkMenu, CdkMenuItem, NgStyle],
+	imports: [RouterOutlet, CdkDrag, CdkDropList, CdkDropListGroup, CdkContextMenuTrigger, CdkMenu, CdkMenuItem, NgStyle, WidgetComponent],
 	templateUrl: './app.component.html',
 	styleUrl: './app.component.css'
 })
