@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, QueryList, ViewChildren} from '@angular/core';
+import {Component} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {
 	CdkDrag,
@@ -11,13 +11,12 @@ import {
 import {CdkContextMenuTrigger, CdkMenu, CdkMenuItem} from '@angular/cdk/menu';
 import {AsyncPipe, NgStyle} from '@angular/common';
 import {WidgetComponent} from './widget/widget.component';
-import {RowDirective} from './row.directive';
 import {BehaviorSubject} from 'rxjs';
 
 @Component({
 	selector: 'app-root',
 	standalone: true,
-	imports: [RouterOutlet, CdkDrag, CdkDropList, CdkDropListGroup, CdkContextMenuTrigger, CdkMenu, CdkMenuItem, NgStyle, WidgetComponent, RowDirective, AsyncPipe],
+	imports: [RouterOutlet, CdkDrag, CdkDropList, CdkDropListGroup, CdkContextMenuTrigger, CdkMenu, CdkMenuItem, NgStyle, WidgetComponent, AsyncPipe],
 	templateUrl: './app.component.html',
 	styleUrl: './app.component.css'
 })

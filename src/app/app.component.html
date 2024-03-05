@@ -34,7 +34,6 @@
 			cdkDropListOrientation="horizontal"
 		     (cdkDropListDropped)="dropCol($event, ri)"
 			[cdkDropListData]="selectedRows[ri].columns"
-			appRow
 			[id]="row.uuid"
 		>
 			@for (col of row.columns; track ci; let ci = $index) {
