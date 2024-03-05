@@ -2,14 +2,41 @@
 	@for (row of availableRowsOptions; track $index) {
 		<div class="row-option" cdkDrag>
 			<p class="row-option_title">
-				{{row.title}}
+				{{ row.title }}
 			</p>
 		</div>
 	}
 </div>
-<div class="rows-container" cdkDropList cdkDropListGroup #rowsContainer="cdkDropList" (cdkDropListDropped)="dropRow($event)" [cdkDropListData]="selectedRows">
+
+<div class="col-list" cdkDropList [cdkDropListConnectedTo]="rowsIds$ | async" cdkDropListSortingDisabled>
+	@for (col of availableColumnsOptions; track $index) {
+		<div class="col-option" cdkDrag>
+			<p class="col-option_title">
+				{{ col.title }}
+			</p>
+		</div>
+	}
+</div>
+
+<div
+	class="rows-container"
+	cdkDropList
+	cdkDropListGroup
+	#rowsContainer="cdkDropList"
+	(cdkDropListDropped)="dropRow($event)"
+	[cdkDropListData]="selectedRows"
+>
 	@for (row of selectedRows; track ri; let ri = $index) {
-		<div class="row" cdkDropList cdkDrag cdkDropListOrientation="horizontal" (cdkDropListDropped)="dropCol($event, ri)" [cdkDropListData]="selectedRows[ri].columns">
+		<div
+			class="row"
+			cdkDropList
+			cdkDrag
+			cdkDropListOrientation="horizontal"
+		     (cdkDropListDropped)="dropCol($event, ri)"
+			[cdkDropListData]="selectedRows[ri].columns"
+			appRow
+			[id]="row.uuid"
+		>
 			@for (col of row.columns; track ci; let ci = $index) {
 				<div
 					class="col"
@@ -26,9 +53,13 @@
 <ng-template #contextColumns let-rowIndex="rowIndex" let-colIndex="colIndex">
 	<div class="col-menu" cdkMenu>
 		@for (color of availableColumnsOptions; track $index) {
-			<button class="col-menu_item" cdkMenuItem (click)="changeCol(rowIndex, colIndex, color)">{{color.title}}</button>
+			<button
+				class="col-menu_item"
+				cdkMenuItem
+				(click)="changeCol(rowIndex, colIndex, color)"
+			>
+				{{ color.title }}
+			</button>
 		}
 	</div>
 </ng-template>
-
-<app-widget></app-widget>
